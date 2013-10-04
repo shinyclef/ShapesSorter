@@ -81,7 +81,7 @@ public class ShapesSorter
         while (!input.equalsIgnoreCase("x"))
         {
             //display the menu
-            System.out.println("What do you wanna do?");
+            System.out.println("\nWhat do you wanna do?");
             System.out.println("1: Show details of a shape.");
             System.out.println("2: Write sorted output file.");
             System.out.println("x: Exit.");
@@ -144,7 +144,7 @@ public class ShapesSorter
         System.out.println("\nID: " + shapeID);
         System.out.println("Type: " + type);
         System.out.println("Area: " + area);
-        System.out.println("Perimeter: " + perimeter + "\n");
+        System.out.println("Perimeter: " + perimeter);
     }
 
     /* Sorts all shapes based on shape type, and prints a list of those shapes to the output file. */
@@ -181,7 +181,9 @@ public class ShapesSorter
 
                     for (Integer ID : subType.getValue())
                     {
-                        writer.write("\t\t" + ID.toString());
+                        String line = ID.toString() + " (area: " + Shape.getShapesMap().get(ID).getSurfaceArea()
+                                + ", permimeter: " + Shape.getShapesMap().get(ID).getPermimeter() + ")";
+                        writer.write("\t\t" + line);
                         writer.newLine();
                     }
                 }
@@ -203,9 +205,6 @@ public class ShapesSorter
         //Here is a hierarchy of collections. base-shape map -> sub-shape map -> set of IDs
         Map<String, Map<String, Set<Integer>>> baseShape = new TreeMap<>();
 
-        baseShape.put("Triangle", new LinkedHashMap<String, Set<Integer>>());
-        baseShape.put("Quadrilateral", new LinkedHashMap<String, Set<Integer>>());
-
         //loop through shapes and put them where they belong
         for (Shape s : Shape.getShapesMap().values())
         {
@@ -213,7 +212,7 @@ public class ShapesSorter
             Map<String, Set<Integer>> baseTypeMap = baseShape.get(s.getBaseType());
             if (baseTypeMap == null)
             {
-                baseShape.put(s.getBaseType(), new LinkedHashMap<String, Set<Integer>>());
+                baseShape.put(s.getBaseType(), new TreeMap<String, Set<Integer>>());
                 baseTypeMap = baseShape.get(s.getBaseType());
             }
 
@@ -255,7 +254,7 @@ public class ShapesSorter
         {
             File jarFile = new File(ShapesSorter.class.getProtectionDomain()
                     .getCodeSource().getLocation().toURI().getPath());
-            jarDir = jarFile.getPath();
+            jarDir = jarFile.getParent();
         }
         catch (URISyntaxException e)
         {
