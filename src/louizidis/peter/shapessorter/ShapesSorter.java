@@ -47,6 +47,12 @@ public class ShapesSorter
     {
 
         Path path = getFilePath(INPUT_FILENAME);
+        if (path == null)
+        {
+            //do proper error handling
+            return;
+        }
+
         Scanner scanner = null;
         try
         {
@@ -146,22 +152,14 @@ public class ShapesSorter
     {
         Map<String, Map<String, Set<Integer>>> sortedMap = getSortedShapesMap();
         Path path = getFilePath(OUTPUT_FILENAME);
+        if (path == null)
+        {
+            //do proper error handling
+            return;
+        }
 
         //inform user of file location
         System.out.println("Writing output file: " + path);
-
-        //create the file if it doesn't exist
-        File file = new File(path.toUri());
-        try
-        {
-            file.createNewFile();
-        }
-        catch (IOException e)
-        {
-            //do proper error handling here
-            e.printStackTrace();
-            return;
-        }
 
         Charset ENCODING = StandardCharsets.UTF_8;
         try (BufferedWriter writer = Files.newBufferedWriter(path, ENCODING))
@@ -234,7 +232,6 @@ public class ShapesSorter
         return baseShape;
     }
 
-
     /* A utility method for rounding numbers to a specified amount of decimal places.
      * @param unrounded The unrounded number to be rounded.
      * @param precision The number of decimal places to round the number to.
@@ -247,6 +244,7 @@ public class ShapesSorter
     }
 
     /* Utility method that returns a path belong to the given filename within the working directory of the .jar file.
+    *  If the file doesn't exist it will be created.
     *  @param fileName The file name of the file for which to create a path.
     *  @return The path consisting of the .jar working directory and the filename. */
     private static Path getFilePath(String fileName)
@@ -269,6 +267,20 @@ public class ShapesSorter
         {
             return null;
         }
+
+        Path path = Paths.get(jarDir + File.separator + fileName);
+        File file = new File(path.toUri());
+        try
+        {
+            file.createNewFile(); //does not create a new file if it already exists
+        }
+        catch (IOException e)
+        {
+            //do proper error handling
+            e.printStackTrace();
+            return null;
+        }
+
         return Paths.get(jarDir + File.separator + fileName);
     }
 }
