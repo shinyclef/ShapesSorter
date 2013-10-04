@@ -27,7 +27,7 @@ import java.util.*;
  *          spread-sheet may be more suitable than a text file, or even a database depending on the requirements and
  *          scale of the theoretical scenario, but for the purposes of this exercise I will use a simple .txt file.
  *          This is 'not' designed to be a user friendly final product. Obviously, there's no way for you to know
- *          that I wrote this myself. I did this mostly because I have the time and I felt like it.
+ *          that I wrote this myself.
  */
 
 public class ShapesSorter
@@ -147,7 +147,7 @@ public class ShapesSorter
         System.out.println("Perimeter: " + perimeter);
     }
 
-    /* Sorts all shapes based on shape type, and prints a list of those shapes to the output file. */
+    /* Prints a list of all shapes to the output categorized by shape base and sub types. */
     private static void writeOutputFileOption()
     {
         Map<String, Map<String, Set<Integer>>> sortedMap = getSortedShapesMap();
@@ -197,6 +197,13 @@ public class ShapesSorter
 
     }
 
+    /* Builds a hierarchical series of collections that based on all the shapes
+     * in Shape.shapeMap. This method builds the hierarchical structure dynamically
+     * depending on the shape types it finds along the way and this will work with any
+     * new shape inclusions later. The maps are sorted alphabetically.
+     * @return  A hierarchical structure of collections using TreeMaps to navigate through
+     *          shape base types and sub types and ending with a set of IDs belong to that
+     *          shape categorisation. base type map -> sub type map -> ID set */
     private static Map<String, Map<String, Set<Integer>>> getSortedShapesMap()
     {
         /* We're going to create some temporary collections to hold the IDs of various shapes.
