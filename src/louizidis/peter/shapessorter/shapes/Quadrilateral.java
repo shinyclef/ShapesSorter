@@ -5,7 +5,7 @@ import louizidis.peter.shapessorter.ShapesSorter;
 /**
  * Author: Peter Louizidis
  * Date: 3/10/13
- * Time: 6:21 PM
+ * Time: 8:21 PM
  * Description: Represents a quadrilateral.
  */
 

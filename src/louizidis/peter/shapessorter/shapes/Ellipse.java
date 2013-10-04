@@ -5,7 +5,7 @@ import louizidis.peter.shapessorter.ShapesSorter;
 /**
  * Author: Peter Louizidis
  * Date: 3/10/13
- * Time: 6:18 PM
+ * Time: 8:18 PM
  * Description: Represents an abstract single-sided two-dimensional shape, such as a circle or an oval.
  * Notes: Indeed it has a name besides "single-sided two-dimensional entity". :)
  */

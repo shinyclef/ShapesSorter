@@ -17,7 +17,7 @@ import java.util.*;
 /**
  * Author: Peter Louizidis
  * Date: 3/10/13
- * Time: 6:14 PM
+ * Time: 8:14 PM
  * Description: The main class of the ShapesSorter program. Its purpose is to take an input file with information on
  *              various shapes, provide information on those shapes when requested, and and produce a sorted output
  *              file if requested. It is assumed that the unit of measurement is consistent int the input file.

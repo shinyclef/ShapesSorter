@@ -5,7 +5,7 @@ import louizidis.peter.shapessorter.ShapesSorter;
 /**
  * Author: Peter Louizidis
  * Date: 3/10/13
- * Time: 6:16 PM
+ * Time: 8:16 PM
  * Description: Represents an abstract triangle. The super-type for all specific types of triangles.
  */
 
