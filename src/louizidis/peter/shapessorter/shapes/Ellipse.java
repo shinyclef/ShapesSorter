@@ -54,6 +54,6 @@ public class Ellipse extends Shape
     {
         //this is an approximation, ellipse perimeters are apparently not practical to calculate accurately
         return ShapesSorter.round(Math.PI * (3 * (semiMajorAxis + semiMinorAxis)
-                - Math.sqrt(3 * semiMajorAxis + semiMinorAxis) * (semiMajorAxis + 3 * semiMinorAxis)), 2);
+                - Math.sqrt((3 * semiMajorAxis + semiMinorAxis) * (semiMajorAxis + 3 * semiMinorAxis))), 2);
     }
 }
